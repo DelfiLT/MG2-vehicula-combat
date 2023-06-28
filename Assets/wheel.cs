@@ -4,37 +4,26 @@ using UnityEngine;
 
 public class wheel : MonoBehaviour
 {
-    [SerializeField] WheelCollider frontRight;
-    [SerializeField] WheelCollider frontLeft;
-    [SerializeField] WheelCollider backRight;
-    [SerializeField] WheelCollider backLeft;
+    [SerializeField] protected WheelCollider frontRight;
+    [SerializeField] protected WheelCollider frontLeft;
+    [SerializeField] protected WheelCollider backRight;
+    [SerializeField] protected WheelCollider backLeft;
 
-    [SerializeField] Transform frontRightWheel;
-    [SerializeField] Transform frontLeftWheel;
-    [SerializeField] Transform backRightWheel;
-    [SerializeField] Transform backLeftWheel;
+    [SerializeField] protected Transform frontRightWheel;
+    [SerializeField] protected Transform frontLeftWheel;
+    [SerializeField] protected Transform backRightWheel;
+    [SerializeField] protected Transform backLeftWheel;
 
-    public float acceleration = 500f;
-    public float breakingForce = 300f;
-    public float maxTurnAngle = 15f;
+    [SerializeField] protected float acceleration;
+    [SerializeField] protected float breakingForce;
+    [SerializeField] protected float maxTurnAngle;
 
-    private float currentAcceleration = 0f;
-    private float currentBreakForce = 0f;
-    private float currentTurnAngle = 0f;
+    protected float currentAcceleration = 0f;
+    protected float currentBreakForce = 0f;
+    protected float currentTurnAngle = 0f;
 
-    private void FixedUpdate()
+    protected void WheelLogic()
     {
-        currentAcceleration = acceleration * Input.GetAxis("Vertical");
-
-        if (Input.GetKey(KeyCode.Space))
-        {
-            currentBreakForce = breakingForce;
-        }
-        else
-        {
-            currentBreakForce = 0f;
-        }
-
         frontRight.motorTorque = currentAcceleration;
         frontLeft.motorTorque = currentAcceleration;
 
@@ -43,7 +32,6 @@ public class wheel : MonoBehaviour
         backRight.brakeTorque = currentBreakForce;
         backLeft.brakeTorque = currentBreakForce;
 
-        currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
         frontLeft.steerAngle = currentTurnAngle;
         frontRight.steerAngle = currentTurnAngle;
 
@@ -53,7 +41,7 @@ public class wheel : MonoBehaviour
         UpdateWheel(backRight, backRightWheel);
     }
 
-    void UpdateWheel(WheelCollider col, Transform trans)
+    protected void UpdateWheel(WheelCollider col, Transform trans)
     {
         Vector3 position;
         Quaternion rotation;

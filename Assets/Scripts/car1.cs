@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class car1 : CarController, IgetDamaged
+public class car1 : CarController, IgetDamaged, IpickObject
 {
     private void FixedUpdate()
     {
@@ -35,10 +35,41 @@ public class car1 : CarController, IgetDamaged
                 timer = 0;
             }
         }
+
+        if (hp > 100)
+        {
+            hp = 100;
+        }
     }
 
     public void GetDamaged(int damage)
     {
         hp -= damage;
+    }
+
+    public void PickObject(string objectName)
+    {
+        if(objectName == "rocket")
+        {
+            Debug.Log("activate rocket");
+        }
+
+        if(objectName == "speed")
+        {
+            StartCoroutine(activateTurbo());
+        }
+
+        if(objectName == "heal")
+        {
+            hp += 20;
+        }
+    }
+
+    IEnumerator activateTurbo()
+    {
+        acceleration = acceleration * 2;
+        Debug.Log("active ui speed");
+        yield return new WaitForSeconds(10f);
+        acceleration = acceleration / 2;
     }
 }

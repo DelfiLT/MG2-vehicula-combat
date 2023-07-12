@@ -27,6 +27,7 @@ public class CarController : MonoBehaviour
     // Shoot Setup
 
     [SerializeField] protected GameObject bullet;
+    [SerializeField] protected GameObject misil;
     [SerializeField] protected Transform bulletSpawn;
     [SerializeField] protected Transform carBody;
 
@@ -38,6 +39,7 @@ public class CarController : MonoBehaviour
     //Car stats
 
     [SerializeField] protected float hp;
+    [SerializeField] protected bool activeMisil = false;
 
     protected void WheelLogic()
     {
@@ -76,5 +78,10 @@ public class CarController : MonoBehaviour
         bulletRbLeft.AddRelativeForce(Vector3.forward * bulletForce, ForceMode.Impulse);
 
         Destroy(bulletClone, 4);
+    }
+
+    protected void FireMisil()
+    {
+       Instantiate(misil, bulletSpawn.position, carBody.rotation);
     }
 }

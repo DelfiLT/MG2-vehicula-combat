@@ -258,11 +258,13 @@ MonoBehaviour:
   breakingForce: 800
   maxTurnAngle: 20
   bullet: {fileID: 5760098259490571269, guid: 347135c865e5fda4cb9591528af02fc8, type: 3}
+  misil: {fileID: 4067824563477807582, guid: 5bfd22733f3834744b91d5c5988ec76e, type: 3}
   bulletSpawn: {fileID: 6898585796512407344}
   carBody: {fileID: 4123184188067662063}
   bulletForce: 20
   timeToFire: 0.1
   hp: 100
+  activeMisil: 0
 --- !u!1 &2287874757170218280
 GameObject:
   m_ObjectHideFlags: 0

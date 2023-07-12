@@ -26,6 +26,12 @@ public class car2 : CarController, IgetDamaged, IpickObject
 
         }
 
+        if (Input.GetKey(KeyCode.I) && activeMisil)
+        {
+            activeMisil = false;
+            FireMisil();
+        }
+
         if (!canFire)
         {
             timer += Time.deltaTime;
@@ -51,7 +57,7 @@ public class car2 : CarController, IgetDamaged, IpickObject
     {
         if (objectName == "rocket")
         {
-            Debug.Log("activate misil");
+            activeMisil = true;
         }
 
         if (objectName == "speed")
@@ -68,7 +74,6 @@ public class car2 : CarController, IgetDamaged, IpickObject
     IEnumerator activateTurbo()
     {
         acceleration = acceleration * 2;
-        Debug.Log("active ui speed");
         yield return new WaitForSeconds(10f);
         acceleration = acceleration /2;
     }

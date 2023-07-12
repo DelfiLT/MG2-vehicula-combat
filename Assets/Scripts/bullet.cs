@@ -5,11 +5,12 @@ using UnityEngine;
 public class bullet : MonoBehaviour
 {
     private int damage = 1;
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.GetComponent<IgetDamaged>() != null)
+        if (other.gameObject.GetComponent<IgetDamaged>() != null)
         {
-            collision.gameObject.GetComponent<IgetDamaged>().GetDamaged(damage);
+            other.gameObject.GetComponent<IgetDamaged>().GetDamaged(damage);
         }
     }
 }

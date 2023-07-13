@@ -4,21 +4,8 @@ using UnityEngine;
 
 public class car1 : CarController, IgetDamaged, IpickObject
 {
-    private void FixedUpdate()
+    private void Update()
     {
-        WheelLogic();
-        currentAcceleration = acceleration * Input.GetAxis("Vertical_P1");
-        currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal_P1");
-
-        if (Input.GetKey(KeyCode.Space))
-        {
-            currentBreakForce = breakingForce;
-        }
-        else
-        {
-            currentBreakForce = 0f;
-        }
-
         if (Input.GetKey(KeyCode.LeftShift) && canFire)
         {
             canFire = false;
@@ -26,7 +13,7 @@ public class car1 : CarController, IgetDamaged, IpickObject
 
         }
 
-        if(Input.GetKey(KeyCode.Q) && activeMisil)
+        if (Input.GetKey(KeyCode.Q) && activeMisil)
         {
             activeMisil = false;
             FireMisil();
@@ -46,6 +33,22 @@ public class car1 : CarController, IgetDamaged, IpickObject
         {
             hp = 100;
         }
+    }
+    private void FixedUpdate()
+    {
+        currentAcceleration = acceleration * Input.GetAxis("Vertical_P1");
+        currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal_P1");
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            currentBreakForce = breakingForce;
+        }
+        else
+        {
+            currentBreakForce = 0f;
+        }
+
+        WheelLogic();
     }
 
     public void GetDamaged(int damage)

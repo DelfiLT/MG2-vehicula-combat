@@ -1110,10 +1110,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.2658633
+  m_Radius: 0.23492606
   m_Height: 1.0501102
   m_Direction: 2
-  m_Center: {x: 0.0037919045, y: 0.12993431, z: -0.0283638}
+  m_Center: {x: 0.0037919045, y: 0.13532749, z: -0.0283638}
 --- !u!54 &5080123981172350224
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1122,7 +1122,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6450368497052474833}
   serializedVersion: 2
-  m_Mass: 500
+  m_Mass: 1500
   m_Drag: 0.7
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -1150,15 +1150,15 @@ MonoBehaviour:
   frontLeftWheel: {fileID: 7844267895660408048}
   backRightWheel: {fileID: 8932929837522809879}
   backLeftWheel: {fileID: 7860632838581367369}
-  acceleration: 500
+  acceleration: 800
   breakingForce: 300
-  maxTurnAngle: 15
-  bullet: {fileID: 5760098259490571269, guid: 347135c865e5fda4cb9591528af02fc8, type: 3}
-  misil: {fileID: 4067824563477807582, guid: 5bfd22733f3834744b91d5c5988ec76e, type: 3}
+  maxTurnAngle: 35
+  bullet: {fileID: 357605226063522066, guid: 347135c865e5fda4cb9591528af02fc8, type: 3}
+  misil: {fileID: 5267135196459199716, guid: 5bfd22733f3834744b91d5c5988ec76e, type: 3}
   bulletSpawn: {fileID: 1622636695373986884}
   carBody: {fileID: 8061186185092411330}
   bulletForce: 20
-  timeToFire: 0.1
+  timeToFire: 0.3
   hp: 100
   activeMisil: 0
 --- !u!1 &6567225085272502127

@@ -12,11 +12,11 @@ public class objects : MonoBehaviour
         transform.Rotate(0, rotateSpeed, 0, Space.World);
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.GetComponent<IpickObject>() != null)
+        if (other.gameObject.GetComponent<IpickObject>() != null)
         {
-            collision.gameObject.GetComponent<IpickObject>().PickObject(objectName);
+            other.gameObject.GetComponent<IpickObject>().PickObject(objectName);
             Destroy(this.gameObject);
         }
     }

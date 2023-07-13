@@ -46,13 +46,13 @@ public class CarController : MonoBehaviour
         frontRight.motorTorque = currentAcceleration;
         frontLeft.motorTorque = currentAcceleration;
 
+        frontLeft.steerAngle = currentTurnAngle;
+        frontRight.steerAngle = currentTurnAngle;
+
         frontRight.brakeTorque = currentBreakForce;
         frontLeft.brakeTorque = currentBreakForce;
         backRight.brakeTorque = currentBreakForce;
         backLeft.brakeTorque = currentBreakForce;
-
-        frontLeft.steerAngle = currentTurnAngle;
-        frontRight.steerAngle = currentTurnAngle;
 
         UpdateWheel(frontLeft, frontLeftWheel);
         UpdateWheel(frontRight, frontRightWheel);
@@ -69,6 +69,7 @@ public class CarController : MonoBehaviour
         trans.position = position;
         trans.rotation = rotation;
     }
+
     protected void FireBullet()
     {
         GameObject bulletClone = Instantiate(bullet, bulletSpawn.position, carBody.rotation);

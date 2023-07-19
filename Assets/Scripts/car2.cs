@@ -36,17 +36,18 @@ public class car2 : CarController, IgetDamaged, IpickObject
     }
     private void FixedUpdate()
     {
-        currentAcceleration = acceleration * Input.GetAxis("Vertical_P2");
-        currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal_P2");
+        motor = maxMotorTorque * Input.GetAxis("Vertical_P2");
+        steering = maxSteerAngle * Input.GetAxis("Horizontal_P2");
 
         if (Input.GetKey(KeyCode.P))
         {
-            currentBreakForce = breakingForce;
+            breakingForce = maxBreakingForce;
         }
         else
         {
-            currentBreakForce = 0f;
+            breakingForce = 0f;
         }
+
         WheelLogic();
     }
 
@@ -75,8 +76,8 @@ public class car2 : CarController, IgetDamaged, IpickObject
 
     IEnumerator activateTurbo()
     {
-        acceleration = acceleration * 2;
+        maxMotorTorque = maxMotorTorque * 2;
         yield return new WaitForSeconds(10f);
-        acceleration = acceleration /2;
+        maxMotorTorque = maxMotorTorque / 2;
     }
 }

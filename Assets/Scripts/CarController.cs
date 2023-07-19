@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,23 +7,13 @@ public class CarController : MonoBehaviour
 {
     // Wheels Setup
 
-    [SerializeField] protected WheelCollider frontRight;
-    [SerializeField] protected WheelCollider frontLeft;
-    [SerializeField] protected WheelCollider backRight;
-    [SerializeField] protected WheelCollider backLeft;
-
-    [SerializeField] protected Transform frontRightWheel;
-    [SerializeField] protected Transform frontLeftWheel;
-    [SerializeField] protected Transform backRightWheel;
-    [SerializeField] protected Transform backLeftWheel;
-
-    [SerializeField] protected float acceleration;
-    [SerializeField] protected float breakingForce;
-    [SerializeField] protected float maxTurnAngle;
-
-    protected float currentAcceleration = 0f;
-    protected float currentBreakForce = 0f;
-    protected float currentTurnAngle = 0f;
+    public List<AxleInfo> axleInfos;
+    public float maxMotorTorque;
+    public float maxSteerAngle;
+    public float maxBreakingForce;
+    protected float motor;
+    protected float steering;
+    protected float breakingForce;
 
     // Shoot Setup
 
@@ -43,31 +34,43 @@ public class CarController : MonoBehaviour
 
     protected void WheelLogic()
     {
-        frontRight.motorTorque = currentAcceleration;
-        frontLeft.motorTorque = currentAcceleration;
-
-        frontLeft.steerAngle = currentTurnAngle;
-        frontRight.steerAngle = currentTurnAngle;
-
-        frontRight.brakeTorque = currentBreakForce;
-        frontLeft.brakeTorque = currentBreakForce;
-        backRight.brakeTorque = currentBreakForce;
-        backLeft.brakeTorque = currentBreakForce;
-
-        UpdateWheel(frontLeft, frontLeftWheel);
-        UpdateWheel(frontRight, frontRightWheel);
-        UpdateWheel(backLeft, backLeftWheel);
-        UpdateWheel(backRight, backRightWheel);
+        foreach (AxleInfo axleInfo in axleInfos)
+        {
+            if (axleInfo.steering)
+            {
+                axleInfo.leftWheel.steerAngle = steering;
+                axleInfo.rightWheel.steerAngle = steering;
+            }
+            if (axleInfo.motor)
+            {
+                axleInfo.leftWheel.motorTorque = motor;
+                axleInfo.rightWheel.motorTorque = motor;
+            }
+            if (axleInfo.breakingForce)
+            {
+                axleInfo.leftWheel.brakeTorque = breakingForce;
+                axleInfo.rightWheel.brakeTorque = breakingForce;
+            }
+            UpdateWheelVisual(axleInfo.leftWheel);
+            UpdateWheelVisual(axleInfo.rightWheel);
+        }
     }
 
-    protected void UpdateWheel(WheelCollider col, Transform trans)
+    protected void UpdateWheelVisual(WheelCollider collider)
     {
+        if (collider.transform.childCount == 0)
+        {
+            return;
+        }
+
+        Transform visualWheel = collider.transform.GetChild(0);
+
         Vector3 position;
         Quaternion rotation;
-        col.GetWorldPose(out position, out rotation);
+        collider.GetWorldPose(out position, out rotation);
 
-        trans.position = position;
-        trans.rotation = rotation;
+        visualWheel.transform.position = position;
+        visualWheel.transform.rotation = rotation;
     }
 
     protected void FireBullet()
@@ -84,5 +87,15 @@ public class CarController : MonoBehaviour
     protected void FireMisil()
     {
        Instantiate(misil, bulletSpawn.position, carBody.rotation);
+    }
+
+    [System.Serializable]
+    public class AxleInfo
+    {
+        public WheelCollider leftWheel;
+        public WheelCollider rightWheel;
+        public bool motor;
+        public bool steering;
+        public bool breakingForce;
     }
 }

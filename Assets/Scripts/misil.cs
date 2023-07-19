@@ -34,6 +34,12 @@ public class misil : MonoBehaviour
         if (other.gameObject.GetComponent<IgetDamaged>() != null)
         {
             other.gameObject.GetComponent<IgetDamaged>().GetDamaged(damage);
+            Destroy(this.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Terrain")) 
+        {
+            Destroy(this.gameObject);
         }
     }
 }

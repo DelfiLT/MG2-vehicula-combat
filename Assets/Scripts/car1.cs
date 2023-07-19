@@ -1,9 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class car1 : CarController, IgetDamaged, IpickObject
 {
+    public TextMeshProUGUI hpText;
+    public GameObject rocketUI;
+    public GameObject velocityUI;
+
     private void Update()
     {
         if (Input.GetKey(KeyCode.LeftShift) && canFire)
@@ -15,6 +23,7 @@ public class car1 : CarController, IgetDamaged, IpickObject
 
         if (Input.GetKey(KeyCode.Q) && activeMisil)
         {
+            rocketUI.SetActive(false);
             activeMisil = false;
             FireMisil();
         }
@@ -29,9 +38,16 @@ public class car1 : CarController, IgetDamaged, IpickObject
             }
         }
 
-        if (hp > 100)
+        hpText.text = "HP: " + hp.ToString("00");
+
+        if (hp > 50)
         {
-            hp = 100;
+            hp = 50;
+        }
+
+        if (hp <= 0)
+        {
+            SceneManager.LoadScene("WinP2");
         }
     }
     private void FixedUpdate()
@@ -61,6 +77,7 @@ public class car1 : CarController, IgetDamaged, IpickObject
         if(objectName == "rocket")
         {
             activeMisil = true;
+            rocketUI.SetActive(true);
         }
 
         if(objectName == "speed")
@@ -77,7 +94,9 @@ public class car1 : CarController, IgetDamaged, IpickObject
     IEnumerator activateTurbo()
     {
         maxMotorTorque = maxMotorTorque * 2;
+        velocityUI.SetActive(true);
         yield return new WaitForSeconds(10f);
         maxMotorTorque = maxMotorTorque / 2;
+        velocityUI.SetActive(false);
     }
 }

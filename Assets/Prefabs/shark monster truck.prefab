@@ -87,7 +87,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 756807861830623090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.442}
+  m_LocalPosition: {x: 0, y: -0.02, z: 0.838}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1129,9 +1129,10 @@ MonoBehaviour:
   bulletSpawn: {fileID: 1622636695373986884}
   carBody: {fileID: 8061186185092411330}
   bulletForce: 20
-  timeToFire: 0.3
-  hp: 100
+  timeToFire: 0.2
+  hp: 50
   activeMisil: 0
+  hpText: {fileID: 0}
 --- !u!1 &6567225085272502127
 GameObject:
   m_ObjectHideFlags: 0

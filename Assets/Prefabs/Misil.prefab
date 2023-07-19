@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   player: {fileID: 0}
+  particlePfab: {fileID: 8603140172236941696, guid: 4aae664bd2e431e4598a698bd18491fb, type: 3}
 --- !u!136 &6764586275636279392
 CapsuleCollider:
   m_ObjectHideFlags: 0

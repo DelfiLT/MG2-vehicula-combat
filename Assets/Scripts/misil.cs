@@ -7,6 +7,7 @@ public class misil : MonoBehaviour
     public float speed;
     public Transform player;
     private int damage = 10;
+    public GameObject particlePfab;
 
     void Start()
     {
@@ -34,11 +35,15 @@ public class misil : MonoBehaviour
         if (other.gameObject.GetComponent<IgetDamaged>() != null)
         {
             other.gameObject.GetComponent<IgetDamaged>().GetDamaged(damage);
+            GameObject particleVFX = Instantiate(particlePfab, transform.position, Quaternion.identity);
+            Destroy(particleVFX, 2f);
             Destroy(this.gameObject);
         }
 
         if (other.gameObject.CompareTag("Terrain")) 
         {
+            GameObject particleVFX = Instantiate(particlePfab, transform.position, Quaternion.identity);
+            Destroy(particleVFX, 2f);
             Destroy(this.gameObject);
         }
     }

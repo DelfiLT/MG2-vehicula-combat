@@ -11,6 +11,14 @@ public class car1 : CarController, IgetDamaged, IpickObject
     public TextMeshProUGUI hpText;
     public GameObject rocketUI;
     public GameObject velocityUI;
+    public GameObject centerOfMass;
+    private Rigidbody carRb;
+
+    private void Start()
+    {
+        carRb = GetComponent<Rigidbody>();
+        carRb.centerOfMass = centerOfMass.transform.localPosition;
+    }
 
     private void Update()
     {
@@ -93,10 +101,10 @@ public class car1 : CarController, IgetDamaged, IpickObject
 
     IEnumerator activateTurbo()
     {
-        maxMotorTorque = maxMotorTorque * 2;
+        maxMotorTorque = maxMotorTorque * 1.5f;
         velocityUI.SetActive(true);
         yield return new WaitForSeconds(10f);
-        maxMotorTorque = maxMotorTorque / 2;
+        maxMotorTorque = maxMotorTorque / 1.5f;
         velocityUI.SetActive(false);
     }
 }

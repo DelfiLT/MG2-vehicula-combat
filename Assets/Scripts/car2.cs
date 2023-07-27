@@ -9,6 +9,14 @@ public class car2 : CarController, IgetDamaged, IpickObject
     public TextMeshProUGUI hpText;
     public GameObject rocketUI;
     public GameObject velocityUI;
+    public GameObject centerOfMass;
+    private Rigidbody carRb;
+
+    private void Start()
+    {
+        carRb = GetComponent<Rigidbody>();
+        carRb.centerOfMass = centerOfMass.transform.localPosition;
+    }
 
     private void Update()
     {

@@ -1153,7 +1153,7 @@ MonoBehaviour:
     motor: 1
     steering: 0
     breakingForce: 1
-  maxMotorTorque: 2800
+  maxMotorTorque: 2000
   maxSteerAngle: 20
   maxBreakingForce: 300
   bullet: {fileID: 357605226063522066, guid: 347135c865e5fda4cb9591528af02fc8, type: 3}
@@ -1164,7 +1164,7 @@ MonoBehaviour:
   timeToFire: 0.2
   hp: 50
   activeMisil: 0
-  hpText: {fileID: 0}
+  hpBars: []
   rocketUI: {fileID: 0}
   velocityUI: {fileID: 0}
   centerOfMass: {fileID: 2884226704819475314}

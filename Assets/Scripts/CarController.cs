@@ -31,6 +31,7 @@ public class CarController : MonoBehaviour
 
     [SerializeField] protected float hp;
     [SerializeField] protected bool activeMisil = false;
+    [SerializeField] protected GameObject[] hpBars;
 
     protected void WheelLogic()
     {

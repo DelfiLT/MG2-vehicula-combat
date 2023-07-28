@@ -8,7 +8,6 @@ using TMPro;
 
 public class car1 : CarController, IgetDamaged, IpickObject
 {
-    public TextMeshProUGUI hpText;
     public GameObject rocketUI;
     public GameObject velocityUI;
     public GameObject centerOfMass;
@@ -46,11 +45,50 @@ public class car1 : CarController, IgetDamaged, IpickObject
             }
         }
 
-        hpText.text = "HP: " + hp.ToString("00");
-
-        if (hp > 50)
+        if (hp >= 50)
         {
+            hpBars[0].SetActive(true);
+            hpBars[1].SetActive(true);
+            hpBars[2].SetActive(true);
+            hpBars[3].SetActive(true);
+            hpBars[4].SetActive(true);
             hp = 50;
+        }
+
+        if(hp > 30 && hp <= 40)
+        {
+            hpBars[0].SetActive(true);
+            hpBars[1].SetActive(true);
+            hpBars[2].SetActive(true);
+            hpBars[3].SetActive(true);
+            hpBars[4].SetActive(false);
+        }
+
+        if(hp > 20 && hp <= 30)
+        {
+            hpBars[0].SetActive(true);
+            hpBars[1].SetActive(true);
+            hpBars[2].SetActive(true);
+            hpBars[3].SetActive(false);
+            hpBars[4].SetActive(false);
+        }
+
+        if (hp > 10 && hp <= 20)
+        {
+            hpBars[0].SetActive(true);
+            hpBars[1].SetActive(true);
+            hpBars[2].SetActive(false);
+            hpBars[3].SetActive(false);
+            hpBars[4].SetActive(false);
+        }
+
+        if (hp <= 10)
+        {
+            hpBars[0].SetActive(true);
+            hpBars[1].SetActive(false);
+            hpBars[2].SetActive(false);
+            hpBars[3].SetActive(false);
+            hpBars[4].SetActive(false);
         }
 
         if (hp <= 0)

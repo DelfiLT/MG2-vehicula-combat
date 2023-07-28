@@ -254,7 +254,7 @@ MonoBehaviour:
     breakingForce: 1
   - leftWheel: {fileID: 5013266055567479084}
     rightWheel: {fileID: 355688400630158736}
-    motor: 0
+    motor: 1
     steering: 0
     breakingForce: 1
   maxMotorTorque: 2500
@@ -268,7 +268,7 @@ MonoBehaviour:
   timeToFire: 0.2
   hp: 50
   activeMisil: 0
-  hpText: {fileID: 0}
+  hpBars: []
   rocketUI: {fileID: 0}
   velocityUI: {fileID: 0}
   centerOfMass: {fileID: 4954436242896520194}
@@ -380,7 +380,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2826063783911386513}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.171, y: -0.905, z: -0.563}
+  m_LocalPosition: {x: -4.217, y: -0.905, z: -0.563}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -403,16 +403,16 @@ WheelCollider:
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 80
+  m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 2
-    m_ExtremumValue: 5
-    m_AsymptoteSlip: 5
-    m_AsymptoteValue: 2
+    m_ExtremumSlip: 0.4
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: 0.8
+    m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.4
+    m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
@@ -526,7 +526,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3371423689799103991}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.656, y: -0.903, z: -0.556}
+  m_LocalPosition: {x: -3.615, y: -0.903, z: -0.556}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -549,16 +549,16 @@ WheelCollider:
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 80
+  m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 2
-    m_ExtremumValue: 5
-    m_AsymptoteSlip: 5
-    m_AsymptoteValue: 2
+    m_ExtremumSlip: 0.4
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: 0.8
+    m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.4
+    m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
@@ -709,7 +709,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4488541599967823862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.171, y: -0.909, z: 0.006}
+  m_LocalPosition: {x: -4.217, y: -0.909, z: 0.006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -732,20 +732,20 @@ WheelCollider:
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 80
+  m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 2
-    m_ExtremumValue: 5
-    m_AsymptoteSlip: 5
-    m_AsymptoteValue: 2
+    m_ExtremumSlip: 0.4
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: 0.8
+    m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.16
-    m_ExtremumValue: 0.73
-    m_AsymptoteSlip: 0.35
-    m_AsymptoteValue: 0.45
-    m_Stiffness: 0.79
+    m_ExtremumSlip: 0.2
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: 0.5
+    m_AsymptoteValue: 0.75
+    m_Stiffness: 1
   m_Enabled: 1
 --- !u!1 &4594217890537280960
 GameObject:
@@ -855,7 +855,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4699614474073716919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.656, y: -0.901, z: -0.012}
+  m_LocalPosition: {x: -3.615, y: -0.901, z: -0.012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -878,16 +878,16 @@ WheelCollider:
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 80
+  m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 2
-    m_ExtremumValue: 5
-    m_AsymptoteSlip: 5
-    m_AsymptoteValue: 2
+    m_ExtremumSlip: 0.4
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: 0.8
+    m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.4
+    m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
@@ -950,8 +950,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6241354234385727346}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00015808105, y: -0.033222657, z: -0.29777336}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.00621, y: -0.033222657, z: -0.29777336}
+  m_LocalScale: {x: 1.2331464, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7143239020337156192}
@@ -1182,8 +1182,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7341698053200869762}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00015808105, y: -0.033222657, z: 0.25664893}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.0012, y: -0.033222657, z: 0.25664893}
+  m_LocalScale: {x: 1.2918108, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7143239020337156192}

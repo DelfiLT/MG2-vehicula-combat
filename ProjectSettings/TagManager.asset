@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Player2
   - Terrain
+  - Ground
   layers:
   - Default
   - TransparentFX

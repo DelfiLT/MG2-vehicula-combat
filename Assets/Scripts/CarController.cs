@@ -33,6 +33,13 @@ public class CarController : MonoBehaviour
     [SerializeField] protected bool activeMisil = false;
     [SerializeField] protected GameObject[] hpBars;
 
+    //Particles
+
+    [SerializeField] protected GameObject healParticle;
+    [SerializeField] protected GameObject velocityParticle;
+    [SerializeField] protected GameObject rocketParticle;
+
+
     protected void WheelLogic()
     {
         foreach (AxleInfo axleInfo in axleInfos)

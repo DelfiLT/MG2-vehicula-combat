@@ -29,6 +29,7 @@ public class car2 : CarController, IgetDamaged, IpickObject
         if (Input.GetKey(KeyCode.I) && activeMisil)
         {
             rocketUI.SetActive(false);
+            rocketParticle.SetActive(false);
             activeMisil = false;
             FireMisil();
         }
@@ -122,6 +123,7 @@ public class car2 : CarController, IgetDamaged, IpickObject
         if (objectName == "rocket")
         {
             rocketUI.SetActive(true);
+            rocketParticle.SetActive(true);
             activeMisil = true;
         }
 
@@ -132,6 +134,7 @@ public class car2 : CarController, IgetDamaged, IpickObject
 
         if (objectName == "heal")
         {
+            healParticle.SetActive(true);
             hp += 20;
         }
     }
@@ -140,8 +143,25 @@ public class car2 : CarController, IgetDamaged, IpickObject
     {
         maxMotorTorque = maxMotorTorque * 2;
         velocityUI.SetActive(true);
+        velocityParticle.SetActive(true);
         yield return new WaitForSeconds(10f);
         maxMotorTorque = maxMotorTorque / 2;
         velocityUI.SetActive(false);
+        velocityParticle.SetActive(false);
     }
+
+    IEnumerator FixRotation()
+    {
+        yield return new WaitForSeconds(3f);
+        transform.rotation = Quaternion.identity;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            StartCoroutine(FixRotation());
+        }
+    }
+
 }

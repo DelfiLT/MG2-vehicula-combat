@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CarController : MonoBehaviour
 {
@@ -27,17 +28,28 @@ public class CarController : MonoBehaviour
     protected float timer;
     protected bool canFire;
 
+    public GameObject flameThrower;
+    protected int fireUse;
+
     //Car stats
 
     [SerializeField] protected float hp;
     [SerializeField] protected bool activeMisil = false;
     [SerializeField] protected GameObject[] hpBars;
+    protected Rigidbody carRb;
 
     //Particles
 
     [SerializeField] protected GameObject healParticle;
     [SerializeField] protected GameObject velocityParticle;
     [SerializeField] protected GameObject rocketParticle;
+
+    //UI
+
+    public GameObject rocketUI;
+    public GameObject velocityUI;
+    public GameObject centerOfMass;
+    public Slider slider;
 
 
     protected void WheelLogic()

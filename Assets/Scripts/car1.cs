@@ -8,13 +8,9 @@ using TMPro;
 
 public class car1 : CarController, IgetDamaged, IpickObject
 {
-    public GameObject rocketUI;
-    public GameObject velocityUI;
-    public GameObject centerOfMass;
-    private Rigidbody carRb;
-
     private void Start()
     {
+        fireUse = 200;
         carRb = GetComponent<Rigidbody>();
         carRb.centerOfMass = centerOfMass.transform.localPosition;
     }
@@ -35,6 +31,23 @@ public class car1 : CarController, IgetDamaged, IpickObject
             activeMisil = false;
             FireMisil();
         }
+       
+        if(fireUse > 0 && Input.GetKey(KeyCode.E))
+        {
+            fireUse = fireUse - 2;
+            slider.value = fireUse;
+            flameThrower.SetActive(true);
+        } else
+        {
+            flameThrower.SetActive(false);
+        }
+
+        if (fireUse <= 200 && !Input.GetKey(KeyCode.E))
+        {
+            fireUse++;
+            slider.value = fireUse;
+            flameThrower.SetActive(false);
+        }
 
         if (!canFire)
         {
@@ -46,51 +59,7 @@ public class car1 : CarController, IgetDamaged, IpickObject
             }
         }
 
-        if (hp >= 50)
-        {
-            hpBars[0].SetActive(true);
-            hpBars[1].SetActive(true);
-            hpBars[2].SetActive(true);
-            hpBars[3].SetActive(true);
-            hpBars[4].SetActive(true);
-            hp = 50;
-        }
-
-        if(hp > 30 && hp <= 40)
-        {
-            hpBars[0].SetActive(true);
-            hpBars[1].SetActive(true);
-            hpBars[2].SetActive(true);
-            hpBars[3].SetActive(true);
-            hpBars[4].SetActive(false);
-        }
-
-        if(hp > 20 && hp <= 30)
-        {
-            hpBars[0].SetActive(true);
-            hpBars[1].SetActive(true);
-            hpBars[2].SetActive(true);
-            hpBars[3].SetActive(false);
-            hpBars[4].SetActive(false);
-        }
-
-        if (hp > 10 && hp <= 20)
-        {
-            hpBars[0].SetActive(true);
-            hpBars[1].SetActive(true);
-            hpBars[2].SetActive(false);
-            hpBars[3].SetActive(false);
-            hpBars[4].SetActive(false);
-        }
-
-        if (hp <= 10)
-        {
-            hpBars[0].SetActive(true);
-            hpBars[1].SetActive(false);
-            hpBars[2].SetActive(false);
-            hpBars[3].SetActive(false);
-            hpBars[4].SetActive(false);
-        }
+        manageHealth();
 
         if (hp <= 0)
         {
@@ -140,6 +109,55 @@ public class car1 : CarController, IgetDamaged, IpickObject
         }
     }
 
+    public void manageHealth()
+    {
+        if (hp >= 50)
+        {
+            hpBars[0].SetActive(true);
+            hpBars[1].SetActive(true);
+            hpBars[2].SetActive(true);
+            hpBars[3].SetActive(true);
+            hpBars[4].SetActive(true);
+            hp = 50;
+        }
+
+        if (hp > 30 && hp <= 40)
+        {
+            hpBars[0].SetActive(true);
+            hpBars[1].SetActive(true);
+            hpBars[2].SetActive(true);
+            hpBars[3].SetActive(true);
+            hpBars[4].SetActive(false);
+        }
+
+        if (hp > 20 && hp <= 30)
+        {
+            hpBars[0].SetActive(true);
+            hpBars[1].SetActive(true);
+            hpBars[2].SetActive(true);
+            hpBars[3].SetActive(false);
+            hpBars[4].SetActive(false);
+        }
+
+        if (hp > 10 && hp <= 20)
+        {
+            hpBars[0].SetActive(true);
+            hpBars[1].SetActive(true);
+            hpBars[2].SetActive(false);
+            hpBars[3].SetActive(false);
+            hpBars[4].SetActive(false);
+        }
+
+        if (hp <= 10)
+        {
+            hpBars[0].SetActive(true);
+            hpBars[1].SetActive(false);
+            hpBars[2].SetActive(false);
+            hpBars[3].SetActive(false);
+            hpBars[4].SetActive(false);
+        }
+    }
+
     IEnumerator activateTurbo()
     {
         maxMotorTorque = maxMotorTorque * 2;
@@ -169,6 +187,14 @@ public class car1 : CarController, IgetDamaged, IpickObject
         if (collision.gameObject.CompareTag("Ground"))
         {
             StartCoroutine(FixRotation());
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.CompareTag("FlameThrowerP2"))
+        {
+            hp = hp - 0.09f;
         }
     }
 }

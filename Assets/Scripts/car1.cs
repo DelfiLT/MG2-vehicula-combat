@@ -10,7 +10,7 @@ public class car1 : CarController, IgetDamaged, IpickObject
 {
     private void Start()
     {
-        fireUse = 200;
+        fireUse = 1000;
         carRb = GetComponent<Rigidbody>();
         carRb.centerOfMass = centerOfMass.transform.localPosition;
     }
@@ -31,23 +31,6 @@ public class car1 : CarController, IgetDamaged, IpickObject
             activeMisil = false;
             FireMisil();
         }
-       
-        if(fireUse > 0 && Input.GetKey(KeyCode.E))
-        {
-            fireUse = fireUse - 2;
-            slider.value = fireUse;
-            flameThrower.SetActive(true);
-        } else
-        {
-            flameThrower.SetActive(false);
-        }
-
-        if (fireUse <= 200 && !Input.GetKey(KeyCode.E))
-        {
-            fireUse++;
-            slider.value = fireUse;
-            flameThrower.SetActive(false);
-        }
 
         if (!canFire)
         {
@@ -66,6 +49,7 @@ public class car1 : CarController, IgetDamaged, IpickObject
             SceneManager.LoadScene("WinP2");
         }
     }
+
     private void FixedUpdate()
     {
         motor = maxMotorTorque * Input.GetAxis("Vertical_P1");
@@ -78,6 +62,24 @@ public class car1 : CarController, IgetDamaged, IpickObject
         else
         {
             breakingForce = 0f;
+        }
+
+        if (fireUse > 0 && Input.GetKey(KeyCode.E))
+        {
+            fireUse = fireUse - 2;
+            slider.value = fireUse;
+            flameThrower.SetActive(true);
+        }
+        else
+        {
+            flameThrower.SetActive(false);
+        }
+
+        if (fireUse <= 1000 && !Input.GetKey(KeyCode.E))
+        {
+            fireUse++;
+            slider.value = fireUse;
+            flameThrower.SetActive(false);
         }
 
         WheelLogic();

@@ -8,7 +8,7 @@ public class car2 : CarController, IgetDamaged, IpickObject
 {   
     private void Start()
     {
-        fireUse = 200;
+        fireUse = 1000;
         carRb = GetComponent<Rigidbody>();
         carRb.centerOfMass = centerOfMass.transform.localPosition;
     }
@@ -28,24 +28,6 @@ public class car2 : CarController, IgetDamaged, IpickObject
             rocketParticle.SetActive(false);
             activeMisil = false;
             FireMisil();
-        }
-
-        if (fireUse > 0 && Input.GetKey(KeyCode.P))
-        {
-            fireUse = fireUse - 2;
-            slider.value = fireUse;
-            flameThrower.SetActive(true);
-        }
-        else
-        {
-            flameThrower.SetActive(false);
-        }
-
-        if (fireUse <= 200 && !Input.GetKey(KeyCode.P))
-        {
-            fireUse++;
-            slider.value = fireUse;
-            flameThrower.SetActive(false);
         }
 
         if (!canFire)
@@ -78,6 +60,24 @@ public class car2 : CarController, IgetDamaged, IpickObject
         else
         {
             breakingForce = 0f;
+        }
+
+        if (fireUse > 0 && Input.GetKey(KeyCode.P))
+        {
+            fireUse = fireUse - 2;
+            slider.value = fireUse;
+            flameThrower.SetActive(true);
+        }
+        else
+        {
+            flameThrower.SetActive(false);
+        }
+
+        if (fireUse <= 1000 && !Input.GetKey(KeyCode.P))
+        {
+            fireUse++;
+            slider.value = fireUse;
+            flameThrower.SetActive(false);
         }
 
         WheelLogic();
